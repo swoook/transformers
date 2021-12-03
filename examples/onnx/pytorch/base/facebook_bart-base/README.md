@@ -29,5 +29,5 @@ onnxruntime-gpu==1.9.0
    $ONNX_PATH
    ```
 
-3. :exclamation:**TODO** Verify `$ONNX_PATH` by using [./verify.sh](./verify.sh)
+3. :exclamation:**TODO** Verify `$ONNX_PATH` by using [./verify.py](./verify.py)
 
