@@ -92,6 +92,7 @@ _import_structure = {
         "DataCollatorForTokenClassification",
         "DataCollatorForWholeWordMask",
         "DataCollatorWithPadding",
+        "DefaultDataCollator",
         "default_data_collator",
     ],
     "feature_extraction_sequence_utils": ["SequenceFeatureExtractor"],
@@ -244,6 +245,7 @@ _import_structure = {
     "models.mbart": ["MBartConfig"],
     "models.mbart50": [],
     "models.megatron_bert": ["MEGATRON_BERT_PRETRAINED_CONFIG_ARCHIVE_MAP", "MegatronBertConfig"],
+    "models.mluke": [],
     "models.mmbt": ["MMBTConfig"],
     "models.mobilebert": ["MOBILEBERT_PRETRAINED_CONFIG_ARCHIVE_MAP", "MobileBertConfig", "MobileBertTokenizer"],
     "models.mpnet": ["MPNET_PRETRAINED_CONFIG_ARCHIVE_MAP", "MPNetConfig", "MPNetTokenizer"],
@@ -378,6 +380,7 @@ if is_sentencepiece_available():
     _import_structure["models.marian"].append("MarianTokenizer")
     _import_structure["models.mbart"].append("MBartTokenizer")
     _import_structure["models.mbart50"].append("MBart50Tokenizer")
+    _import_structure["models.mluke"].append("MLukeTokenizer")
     _import_structure["models.mt5"].append("MT5Tokenizer")
     _import_structure["models.pegasus"].append("PegasusTokenizer")
     _import_structure["models.reformer"].append("ReformerTokenizer")
@@ -950,6 +953,7 @@ if is_torch_available():
         [
             "GPTJ_PRETRAINED_MODEL_ARCHIVE_LIST",
             "GPTJForCausalLM",
+            "GPTJForQuestionAnswering",
             "GPTJForSequenceClassification",
             "GPTJModel",
             "GPTJPreTrainedModel",
@@ -1035,6 +1039,7 @@ if is_torch_available():
             "LukeForEntityClassification",
             "LukeForEntityPairClassification",
             "LukeForEntitySpanClassification",
+            "LukeForMaskedLM",
             "LukeModel",
             "LukePreTrainedModel",
         ]
@@ -2087,6 +2092,7 @@ if TYPE_CHECKING:
         DataCollatorForTokenClassification,
         DataCollatorForWholeWordMask,
         DataCollatorWithPadding,
+        DefaultDataCollator,
         default_data_collator,
     )
     from .feature_extraction_sequence_utils import SequenceFeatureExtractor
@@ -2365,6 +2371,7 @@ if TYPE_CHECKING:
         from .models.m2m_100 import M2M100Tokenizer
         from .models.marian import MarianTokenizer
         from .models.mbart import MBart50Tokenizer, MBartTokenizer
+        from .models.mluke import MLukeTokenizer
         from .models.mt5 import MT5Tokenizer
         from .models.pegasus import PegasusTokenizer
         from .models.reformer import ReformerTokenizer
@@ -2831,6 +2838,7 @@ if TYPE_CHECKING:
         from .models.gptj import (
             GPTJ_PRETRAINED_MODEL_ARCHIVE_LIST,
             GPTJForCausalLM,
+            GPTJForQuestionAnswering,
             GPTJForSequenceClassification,
             GPTJModel,
             GPTJPreTrainedModel,
@@ -2900,6 +2908,7 @@ if TYPE_CHECKING:
             LukeForEntityClassification,
             LukeForEntityPairClassification,
             LukeForEntitySpanClassification,
+            LukeForMaskedLM,
             LukeModel,
             LukePreTrainedModel,
         )
