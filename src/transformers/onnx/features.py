@@ -60,7 +60,7 @@ class FeaturesManager:
     # Set of model topologies we support associated to the features supported by each topology and the factory
     _SUPPORTED_MODEL_KIND = {
         "albert": supported_features_mapping("default", onnx_config_cls=AlbertOnnxConfig),
-        "bart": supported_features_mapping("default", onnx_config_cls=BartOnnxConfig),
+        "bart": supported_features_mapping("default", "sequence-classification", onnx_config_cls=BartOnnxConfig),
         "mbart": supported_features_mapping("default", onnx_config_cls=MBartOnnxConfig),
         "bert": supported_features_mapping("default", onnx_config_cls=BertOnnxConfig),
         "camembert": supported_features_mapping(

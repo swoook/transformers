@@ -192,18 +192,29 @@ class BartOnnxConfig(OnnxConfigWithPast):
 
     @property
     def outputs(self) -> Mapping[str, Mapping[int, str]]:
-        if self.use_past:
-            return OrderedDict(
-                [
-                    ("last_hidden_state", {0: "batch", 1: "sequence"}),
-                    ("past_keys", {0: "batch", 2: "sequence"}),
-                    ("encoder_last_hidden_state", {0: "batch", 1: "sequence"}),
-                ]
-            )
-        else:
-            return OrderedDict(
-                [
-                    ("last_hidden_state", {0: "batch", 1: "sequence"}),
-                    ("encoder_last_hidden_state", {0: "batch", 1: "sequence"}),
-                ]
-            )
+        if self.task in ["default"]:
+            if self.use_past:
+                return OrderedDict(
+                    [
+                        ("last_hidden_state", {0: "batch", 1: "sequence"}),
+                        ("past_keys", {0: "batch", 2: "sequence"}),
+                        ("encoder_last_hidden_state", {0: "batch", 1: "sequence"}),
+                    ]
+                )
+            else:
+                return OrderedDict(
+                    [
+                        ("last_hidden_state", {0: "batch", 1: "sequence"}),
+                        ("encoder_last_hidden_state", {0: "batch", 1: "sequence"}),
+                    ]
+                )
+        elif self.task in ["sequence-classification"]:
+            if self.use_past:
+                raise NotImplementedError
+            else:
+                return OrderedDict(
+                    [
+                        ("logits", {0: "batch"}),
+                        ("encoder_last_hidden_state", {0: "batch", 1: "sequence"}),
+                    ]
+                )
